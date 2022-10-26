@@ -65,12 +65,13 @@ const deploy: DeployFunction = async function (
     deterministicDeployment: true,
   });*/
 
-  await deploy("AMulticall", {
+  // we skip deployment of multicall to accidentally redeploy to mainnet as only diff is '' v ""
+  /*await deploy("AMulticall", {
     from: deployer,
     args: [],
     log: true,
     deterministicDeployment: true,
-  });
+  });*/
 };
 
 deploy.tags = ['extensions', 'adapters', 'l2-suite', 'main-suite']

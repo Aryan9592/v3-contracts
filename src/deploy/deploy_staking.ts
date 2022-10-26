@@ -8,14 +8,15 @@ const deploy: DeployFunction = async function (
   const { deployer } = await getNamedAccounts();
   const { deploy } = deployments;
 
-  const grgTransferProxy = await deploy("ERC20Proxy", {
+  /*const grgTransferProxy = await deploy("ERC20Proxy", {
     from: deployer,
     args: [deployer],  // Authorizable(_owner)
     log: true,
     deterministicDeployment: true,
-  });
+  });*/
+  const grgTransferProxy = {address: "0x8C96182c1B2FE5c49b1bc9d9e039e369f131ED37"}
 
-  const rigoToken = await deploy("RigoToken", {
+  /*const rigoToken = await deploy("RigoToken", {
     from: deployer,
     args: [
       deployer, // address _setMinter
@@ -24,9 +25,10 @@ const deploy: DeployFunction = async function (
     ],
     log: true,
     deterministicDeployment: true,
-  });
+  });*/
+  const rigoToken = {address: "0x4FbB350052Bca5417566f188eB2EBCE5b19BC964"}
 
-  const grgVault = await deploy("GrgVault", {
+  /*const grgVault = await deploy("GrgVault", {
     from: deployer,
     args: [
         grgTransferProxy.address,
@@ -35,7 +37,8 @@ const deploy: DeployFunction = async function (
     ],
     log: true,
     deterministicDeployment: true,
-  });
+  });*/
+  const grgVault = {address: "0xfbd2588b170Ff776eBb1aBbB58C0fbE3ffFe1931"}
 
   const authority = await deploy("Authority", {
     from: deployer,
@@ -65,7 +68,7 @@ const deploy: DeployFunction = async function (
     deterministicDeployment: true,
   });
 
-  const stakingProxy = await deploy("StakingProxy", {
+  /*const stakingProxy = await deploy("StakingProxy", {
     from: deployer,
     args: [
         staking.address,
@@ -73,7 +76,8 @@ const deploy: DeployFunction = async function (
     ],
     log: true,
     deterministicDeployment: true,
-  });
+  });*/
+  const stakingProxy = {address: "0x730dDf7b602dB822043e0409d8926440395e07fE"}
 
   await deploy("AStaking", {
     from: deployer,
@@ -96,7 +100,7 @@ const deploy: DeployFunction = async function (
     deterministicDeployment: true,
   })
 
-  const inflation = await deploy("Inflation", {
+  /*const inflation = await deploy("Inflation", {
     from: deployer,
     args: [
       rigoToken.address,
@@ -104,7 +108,7 @@ const deploy: DeployFunction = async function (
     ],
     log: true,
     deterministicDeployment: true,
-  });
+  });*/
 
   await deploy("ProofOfPerformance", {
     from: deployer,
