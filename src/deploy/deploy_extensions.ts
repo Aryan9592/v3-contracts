@@ -56,7 +56,7 @@ const deploy: DeployFunction = async function (
     deterministicDeployment: true,
   });
 
-  const uniswapRouter2 = "0x2626664c2603336E57B271c5C0b26F421741e481"
+  const uniswapRouter2 = "0x2626664c2603336E57B271c5C0b26F421741e481";
 
   await deploy("AUniswap", {
     from: deployer,
@@ -68,6 +68,15 @@ const deploy: DeployFunction = async function (
   await deploy("AMulticall", {
     from: deployer,
     args: [],
+    log: true,
+    deterministicDeployment: true,
+  });
+
+  const governanceProxy = { address: "0x5F8607739c2D2d0b57a4292868C368AB1809767a" };
+
+  await deploy("AGovernance", {
+    from: deployer,
+    args: [governanceProxy.address],
     log: true,
     deterministicDeployment: true,
   });
