@@ -15,16 +15,7 @@ const deploy: DeployFunction = async function (
     deterministicDeployment: true,
   });
 
-  const rigoToken = await deploy("RigoToken", {
-    from: deployer,
-    args: [
-      deployer, // address _setMinter
-      deployer, // address _setRigoblock
-      deployer // address _grgHolder
-    ],
-    log: true,
-    deterministicDeployment: true,
-  });
+  const rigoToken = { address: "0x09188484e1Ab980DAeF53a9755241D759C5B7d60" };
 
   const grgVault = await deploy("GrgVault", {
     from: deployer,
@@ -85,16 +76,6 @@ const deploy: DeployFunction = async function (
     log: true,
     deterministicDeployment: true,
   });
-
-  await deploy("ASelfCustody", {
-    from: deployer,
-    args: [
-        grgVault.address,
-        stakingProxy.address
-    ],
-    log: true,
-    deterministicDeployment: true,
-  })
 
   const inflation = await deploy("InflationL2", {
     from: deployer,
